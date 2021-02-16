@@ -1,0 +1,266 @@
+<?php
+session_start();
+header("Cache-control: private"); // IE 6 Fix.
+
+$path = "./";
+
+include($path . 'common/includes.php');
+
+$link = DatabaseConnect();
+$login = new Login($link, $DB_USER_TABLE);
+$userid = $login->GetLoginID();
+
+$pageheader = new BannerMenus_cellbio($link, $DB_USER_TABLE, $path);
+
+include($path . 'common/resources_product_data.php');       // Load product line and product data
+include($path . 'common/resources_product_tile_data.php');  // Load functions and icon data for each tile type
+
+include($path . 'ella-menus.php');  // Load Ella common menus
+
+$title       = 'Simple Plex for COVID-19 Research :: ProteinSimple';
+$description = 'COVID-19 real-time biological phenotyping with automated Simple Plex ELISAs. Measure the immune response to viral infection with inflammatory cytokine storm panels.';
+/* The page's main menu section - 'about' 'products' 'applications' 'learn' 'support' 'contact' or 'shop' */
+$section = 'products';
+
+/* Start page */
+page_head_start($title, $description);
+/* Load any additional CSS and JS files here */
+?>
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo $path; ?>style_ps_toggles.css<?php DateStampQS('style_ps_toggles.css') ?>" />
+<style>
+.caption { margin-bottom:4em !important; }
+.table-ella-pages > thead > tr > th, .table-ella-pages > tbody > tr > th, 
+.table-ella-pages > thead > tr > td, .table-ella-pages > tbody > tr > td {
+	padding:10px 30px;
+}
+.fluid-width-video-wrapper { padding-top:0 !important; }
+</style>
+<?php
+page_head_end();
+?>
+<body>
+<?php
+$pageheader->page_body_header($section,$userid);
+page_body_content_start();
+// Main content area start (full width)
+page_body_content_main_full_width_start();
+?>
+
+	<h1>Simple Plex for COVID-19 Research</h1>
+
+	<div class="col_half nobottommargin">
+		<h3 style="margin-top:0;">Real-Time Biological Phenotyping</h3>
+		<p>When researching an acute SARS-CoV-2 infection and the resulting and deadly COVID-19 disease, speed and data quality are key. Ella enables cytokine and pro-inflammatory biomarker immunoassays in a multianalyte, automated and standardized format. Get the most reliable immunoassay results in real time with Ella.</p>
+		<ul class="ps">
+		<li>After loading the cartridge, data is available in just 75 minutes, getting you to critical decision points faster</li>
+		<li>Factory calibrated cartridges and built-in standard curves minimize inter-lot variability allowing you to get the same measurement anywhere</li>
+		<li>80% reduction in manual steps eliminates operator error and inconsistent results</li>
+		</ul>
+	</div>
+	<div class="col_half nobottommargin col_last" style="text-align:center;">
+		<iframe style="width:450px;height:253px;position:relative;margin:1em auto;" src="https://www.youtube.com/embed/vDW25Vy1SKg?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" alt="Ella Automated ELISA" allowfullscreen></iframe>
+		<div class="div_btn_rnd_wrap" style="text-align:center;padding-left:0;">
+		<a href="ella.html" class="button_round" style="margin:15px 25px;"><span>Learn<br />More</span></a>
+		<a href="<?php echo($RFQ_SIMPLEPLEX_URL); ?>" class="button_round" style="margin:15px 25px;"><span>Request<br />Pricing</span></a>
+		</div>
+	</div>
+	<div class="clear"></div>
+
+	<div class="col_full nobottommargin">
+		<h3>Discount Pricing on Ella for COVID-19 Research</h3>
+		<p>Ella is here to help in your fight against COVID-19. For researchers in this space, we're offering the fully automated platform for <a href="<?php echo($RFQ_SIMPLEPLEX_URL); ?>">25% off</a>. If you're fighting this terrible disease, then we'd like to help!</p>
+
+		<h3>How Ella is Helping During COVID-19</h3>
+		<p>Ella is at the forefront of the fight against COVID-19. The Human Immune Monitoring Center at Mount Sinai is leveraging the high-quality data and real-time results of Ella to understand if an <a href="https://www.mountsinai.org/about/newsroom/2020/mount-sinai-developing-an-end-to-end-diagnostics-solution-for-covid-19-that-incorporates-diagnosis-treatment-selection-and-monitoring-of-disease-course-pr" target="_blank" rel="noopener">immunologic response during COVID-19</a> is turning deadly. This insight is helping them determine if novel immuno-modulating therapies have the potential to mediate response to the virus.</p>
+	</div>
+	<div class="clear"></div>
+
+	<div class="col_two_third">
+		<p><a href="https://cytokinesociety.org/the-role-of-cytokines-in-covid-19-june-18th-2020-9am-1-45pm-eastern-virtual-free-meeting/" target="_blank" rel="noopener">Watch</a> this virtual meeting organized by the NIH and FDA, to learn more about the role of cytokines in COVID-19 and how researchers at Mount Sinai established a rapid and quantitative cytokine test on Ella to obtain actionable immune monitoring data during the management of COVID-19 patients.</p>
+	</div>
+	<div class="col_one_third col_last" style="text-align:center;">
+		<a href="https://cytokinesociety.org/the-role-of-cytokines-in-covid-19-june-18th-2020-9am-1-45pm-eastern-virtual-free-meeting/" target="_blank" rel="noopener"><img src="images_ps/ella_apps_covid-19_role_of_cytokines.jpg" alt="Cytokines in COVID-19 Webinar" style="width:100%;max-width:380px;" /></a>
+	</div>
+	<div class="clear"></div>
+
+	<div class="col_two_third">
+		<p><a href="https://www.cancerresearch.org/events/conferences/covid-19-cancer-immunotherapy-research-livestream" target="_blank" rel="noopener">Watch</a> Mount Sinai’s Miriam Merad, M.D., Ph.D. discuss the progress they’ve made using Ella for real-time immune profiling of the hyperinflammatory response during COVID-19 in this webinar.</p>
+	</div>
+	<div class="col_one_third col_last" style="text-align:center;">
+		<a href="https://www.cancerresearch.org/events/conferences/covid-19-cancer-immunotherapy-research-livestream" target="_blank" rel="noopener"><img src="images_ps/ella_apps_covid-19_immune_profiling.jpg" alt="COVID-19 Immune Response Profiling Webinar" style="width:100%;max-width:380px;" /></a>
+	</div>
+	<div class="clear"></div>
+
+	<div class="col_two_third">
+		<p>Researchers at the Ichan School of Medicine at Mount Sinai publish in Nature Medicine using The Cytokine Storm Panel on Ella! Read their work, entitled, <a href="https://www.nature.com/articles/s41591-020-1051-9" target="_blank" rel="noopener">“An Inflammatory cytokine signature predicts COVID-19 severity and survival”</a>.</p>
+	</div>
+	<div class="col_one_third col_last" style="text-align:center;">
+		<a href="https://www.nature.com/articles/s41591-020-1051-9" target="_blank" rel="noopener"><img src="images_ps/nature-medicine-logo.svg" alt="Nature Medicine logo" style="width:100%;max-width:250px;" /></a>
+	</div>
+	<div class="clear"></div>
+
+	<div class="col_full nobottommargin">
+		<h3>Ella Promises Better Clinical Care for Acute Respiratory Failure and Sepsis</h3>
+	</div>
+	<div class="clear"></div>
+
+	<div class="col_one_sixth nobottommargin" style="text-align:center;">
+		<img src="images_ps/stories/dr_micheal-matthay_phd.jpg" style="max-width:140px;" alt="Immune Response to SARS-Cov-2 Researcher, Dr. Tan" />
+	</div>
+	<div class="col_half nobottommargin">
+		<p><em>"Timely results from Ella have the potential to direct treatment for acute diseases where administration needs to take place in a matter of hours."</em></p>
+		<p><em>- Michael Matthay, M.D., Ph.D., Professor of Medicine, University of California San Francisco</em></p>
+	</div>
+	<div class="col_one_third nobottommargin col_last" style="text-align:center;">
+		<a href="/from-your-peers/ella-promises-better-clinical-care" class="button_round" style="margin:1em 0;"><span>Read<br />Story</span></a>
+	</div>
+	<div class="clear"></div>
+
+	<div class="col_full nobottommargin">
+		<h3>Characterizing T-cell Immune Responses Against SARS-CoV-2 with Ella</h3>
+	</div>
+	<div class="clear"></div>
+
+	<div class="col_one_sixth nobottommargin" style="text-align:center;">
+		<img src="images_ps/stories/dr_anthony_tanoto_tan_phd.jpg" style="max-width:140px;" alt="Immune Response to SARS-Cov-2 Researcher, Dr. Tan" />
+	</div>
+	<div class="col_half nobottommargin">
+		<p><em>"Ella is a simple and fast immunoassay platform that would be ideal for implementation in higher biosafety facilities, like BSL-3, to study the acute phase of SARS-CoV-2 infection."</em></p>
+		<p><em>- Anthony Tanoto Tan, Ph.D., Senior Research Fellow, Duke-NUS Medical School, Singapore</em></p>
+	</div>
+	<div class="col_one_third nobottommargin col_last" style="text-align:center;">
+		<a href="/from-your-peers/ella-immune-responses" class="button_round" style="margin:1em 0;"><span>Read<br />Story</span></a>
+	</div>
+	<div class="clear"></div>
+
+	<div class="col_full nobottommargin">
+		<h3>COVID-19 Research Publications Using Ella</h3>
+		<ul class="ps">
+		<li style="line-height:1.5em;margin-bottom:1em;"><a href="https://www.sciencedirect.com/science/article/abs/pii/S1043466620302064" target="_blank" rel="noopener">Cytokine prediction of mortality in COVID19 patients</a><br />Mathilda Mandel, Gil Harari, Michael Gurevich, Anat Achiron<br /><em>Cytokine</em>, June 2020</li>
+		<li style="line-height:1.5em;margin-bottom:1em;"><a href="https://pubmed.ncbi.nlm.nih.gov/32407466/" target="_blank" rel="noopener">An inflammatory profile correlates with decreased frequency of cytotoxic cells in COVID-19</a><br />Veronica Bordoni, Alessandra Sacchi, Eleonora Cimini, Stefania Notari, GermanaGrassi, Eleonora Tartaglia, Rita Casetti, Letizia Giancola, Nazario Bevilacqua,Markus Maeurer, Alimuddin Zumla, Franco Locatelli, Fabrizio De Benedetti,Fabrizio Palmieri, Luisa<br /><em>Clinical Infectious Diseases</em>, May 2020</li>
+		<li style="line-height:1.5em;margin-bottom:1em;"><a href="https://www.nature.com/articles/s41418-020-0572-6.pdf" target="_blank" rel="noopener">Expansion of myeloid-derived suppressor cells in patients with severe coronavirus disease (COVID-19)</a><br />Chiara Agrati, Alessandra Sacchi, Veronica Bordoni, Eleonora Cimini, Stefania Notari, Germana Grassi, Rita Casetti, Eleonora Tartaglia, Eleonora Lalle, Alessandra D’Abramo, Concetta Castilletti, Luisa Marchioni, Yufang Shi, Andrea Mariano, Jin-Wen Song<br /><em>Cell Death &amp; Differentiation</em>, Jun 2020</li>
+		</ul>
+	</div>
+	<div class="clear"></div>
+
+
+	<div class="col_two_third nobottommargin">
+		<h3>Simple Plex COVID-19 Cytokine Storm Panel</h3>
+		<p>Measure key inflammation markers that are indicative of pathologic inflammatory response with a high-quality multianalyte assay.  The 16x4 COVID-19 Cytokine Storm Panel is perfect for batching small numbers of samples and getting results fast.  Learn more about the <a href="ella-multianalyte-assays.html">multianalyte cartridge</a>.</p>
+		<div style="overflow-x:auto;">
+		<table class="table table-bordered" style="margin:1em auto;width:auto;min-width:80%;">
+		<thead>
+		<tr style="color:#ffffff;background:#f08000;">
+			<th colspan="4" style="text-align:center;border-color:#ffffff;">COVID-19 Cytokine Storm Panel Markers</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr style="background:#f2f2f2;">
+			<td style="text-align:center;border-color:#ffffff;"><a href="literature_download.html?docid=1076"><b>IL-1-beta</b></a></td>
+			<td style="text-align:center;border-color:#ffffff;"><a href="literature_download.html?docid=2081"><b>IL-6 2nd Gen</b></a></td>
+			<td style="text-align:center;border-color:#ffffff;"><a href="literature_download.html?docid=1298"><b>IL-8</b></a></td>
+			<td style="text-align:center;border-color:#ffffff;"><a href="literature_download.html?docid=2021"><b>TNF alpha 2nd Gen</b></a></td>
+		</tr>
+		</tbody>
+		</table>
+		</div>
+	</div>
+	<div class="col_one_third nobottommargin col_last" style="text-align:center;">
+		<a href="ella-multianalyte-assays.html"><img src="images_ps/sp_cartridges_ma_16x4.jpg" alt="Cytokine Storm Multianalyte Cartridge" style="width:100%;max-width:220px;margin:1em 0 1.6em;" /></a>
+	</div>
+	<div class="clear"></div>
+
+	<div class="col_two_third nobottommargin">
+		<h3>Simple Plex Cytokine Screening Panel</h3>
+		<p>The 32x8 Multiplex Cytokine Screening Panel gives you deep insight into an immunological response across a spectrum of critical markers.  Get up to 256 results in just 90 minutes. Learn more about the <a href="ella-multiplex-assays.html">multiplex cartridge</a>.</p>
+		<div style="overflow-x:auto;">
+		<table class="table table-bordered" style="margin:1em auto;width:auto;min-width:80%;">
+		<thead>
+		<tr style="color:#ffffff;background:#f08000;">
+			<th colspan="4" style="text-align:center;border-color:#ffffff;">Cytokine Screening Panel Markers</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr style="background:#f2f2f2;">
+			<td style="text-align:center;border-color:#ffffff;"><a href="literature_download.html?docid=1983"><b>IFN-gamma 3rd Gen</b></a></td>
+			<td style="text-align:center;border-color:#ffffff;"><a href="literature_download.html?docid=1080"><b>IL-10</b></a></td>
+			<td style="text-align:center;border-color:#ffffff;"><a href="literature_download.html?docid=1315"><b>IL-2</b></a></td>
+			<td style="text-align:center;border-color:#ffffff;"><a href="literature_download.html?docid=2081"><b>IL-6 2nd Gen</b></a></td>
+		</tr>
+		<tr style="background:#f2f2f2;">
+			<td style="text-align:center;border-color:#ffffff;"><a href="literature_download.html?docid=1076"><b>IL-1-beta</b></a></td>
+			<td style="text-align:center;border-color:#ffffff;"><a href="literature_download.html?docid=1081"><b>IL-12p70</b></a></td>
+			<td style="text-align:center;border-color:#ffffff;"><a href="literature_download.html?docid=1316"><b>IL-4</b></a></td>
+			<td style="text-align:center;border-color:#ffffff;"><a href="literature_download.html?docid=2021"><b>TNF alpha 2nd Gen</b></a></td>
+		</tr>
+		</tbody>
+		</table>
+		</div>
+	</div>
+	<div class="col_one_third nobottommargin col_last" style="text-align:center;">
+		<a href="ella-multiplex-assays.html"><img src="images_ps/sp_cartridges_mp_32x8.jpg" alt="Inflammatory Cytokine Panel Multiplex" style="width:100%;max-width:220px;margin:1em 0 1.6em;" /></a>
+	</div>
+	<div class="clear"></div>
+
+	<div class="col_full nobottommargin" style="margin:2em 0;">
+		<p>In response to the global COVID-19 pandemic, the COVID-19 Cytokine Storm Panel and Multiplex Cytokine Screening Panel are available off the shelf and at a special discount.  Off-the-shelf cartridges ship within 48 hours in the continental US.</p>
+		<p>DISCLAIMER:&nbsp; The Ella™ automated immunoassay platform is currently offered For Research Use Only;&nbsp; Not for Use in Diagnostic Procedures.</p>
+	</div>
+	<div class="clear"></div>
+
+	<div class="col_two_third nobottommargin">
+		<h3>Bio-Techne's Tools for Coronavirus Research</h3>
+		<p>As a leading company in the life sciences research sector, Bio-Techne develops products and resources to support coronavirus research, including reagents and platforms for SARS-CoV-2 detection, cytokine monitoring, and drug discovery.  These tools help the scientific community better understand the mechanisms of infection and develop effective treatments.  Learn more about Bio-Techne's portfolio or products for Coronavirus Research.</p>
+		<p style="text-align:center;"><a href="https://www.rndsystems.com/products/discover-products-answers-about-sars-cov-2-covid-19?utm_source=proteinsimple.com&utm_medium=referral&utm_campaign=sister-link&utm_content=covid19-simpleplex" class="button_ps" target="_blank" rel="noopener"><span>Explore More COVID-19 Research Tools</span></a></p>
+	</div>
+	<div class="col_one_third nobottommargin col_last" style="text-align:center;padding:0 2em;">
+		<img src="images_ps/ella_apps_covid-19_blue.jpg" alt="COVID-19 Research" style="width:100%;max-width:180px;margin:3em 0 1em;" />
+	</div>
+	<div class="clear"></div>
+
+	<p>&nbsp;</p>
+
+
+
+<?php
+sp_menu_applications();
+sp_menu_cartridges();
+?>
+
+
+
+<?php
+// Main content area end (full width)
+page_body_content_main_full_width_end();
+page_body_content_end();
+page_body_footer();
+?>
+</body>
+<script type="text/javascript">
+$(document).ready(function(){
+	if (window.location.hash == "#resources") { 
+		setTimeout ("openSection('#resources');", 500);
+	}
+	else { 
+		setTimeout ("openSection('#applications');", 500);
+		setTimeout ("openSection('#cartridges');", 500);
+	}
+	$('#resources').click(function(){
+		if (window.location.hash == "#resources") { remove_hash_from_url(); }
+		else { window.location.hash = "#resources"; }
+	});
+});
+function openSection(idSection) {
+	$(idSection).toggleClass('toggleta').next('.togglec').slideToggle(300);
+}
+<?php // remove_hash_from_url() by Rahul Gupta at stackoverflow.com  ?>
+function remove_hash_from_url() {
+    var uri = window.location.toString();
+    if (uri.indexOf("#") > 0) {
+        var clean_uri = uri.substring(0, uri.indexOf("#"));
+        window.history.replaceState({}, document.title, clean_uri);
+    }
+}
+</script>
+</html>
